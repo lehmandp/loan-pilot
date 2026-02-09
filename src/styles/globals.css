@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+body { font-family: 'DM Sans', system-ui, sans-serif; background: #f5f7fa; color: #0f172a; margin: 0; }
+input, select, textarea, button { font-family: inherit; }
