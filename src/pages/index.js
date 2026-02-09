@@ -27,10 +27,31 @@ export default function Dashboard() {
   const [showAdd, setShowAdd] = useState(false);
   const [selectedLoan, setSelectedLoan] = useState(null);
 
-  // Redirect to login if not authenticated
+  // Track whether auth session has been checked
+  const [authReady, setAuthReady] = useState(false);
+
+  // Listen for auth state to be determined
   useEffect(() => {
-    if (!user && !loading) router.push("/login");
-  }, [user, loading, router]);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setAuthReady(true);
+      if (!session) {
+        setLoading(false);
+      }
+    });
+    // Also check current session immediately
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setAuthReady(true);
+      if (!session) {
+        setLoading(false);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [supabase]);
+
+  // Redirect to login if not authenticated (once auth is determined)
+  useEffect(() => {
+    if (authReady && !user) router.push("/login");
+  }, [user, authReady, router]);
 
   // Fetch profile + all profiles + loans
   useEffect(() => {
