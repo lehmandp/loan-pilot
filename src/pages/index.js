@@ -177,42 +177,42 @@ export default function Dashboard() {
 
   if (loading || !profile) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="text-slate-400 text-sm">Loading LoanPilot...</div>
+      <div className="min-h-screen flex items-center justify-center bg-ivory-light">
+        <div className="text-slate-light text-sm">Loading LoanPilot...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#f5f7fa]">
-      {/* Header */}
-      <header className="bg-slate-900 text-white px-8 flex items-center justify-between h-[60px] sticky top-0 z-50">
+    <div className="min-h-screen bg-ivory-light">
+      {/* Header — Glassmorphism navbar */}
+      <header className="fixed top-0 w-full bg-ivory-light/90 backdrop-blur-md border-b border-subtle z-50 px-8 flex items-center justify-between h-[60px]">
         <div className="flex items-center gap-3.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-sm font-extrabold">LP</div>
-          <span className="text-[17px] font-bold tracking-tight">LoanPilot</span>
-          <span className="text-[11px] px-2 py-0.5 bg-white/10 rounded-full font-medium ml-1">Pipeline Tracker</span>
+          <div className="w-8 h-8 rounded-lg bg-clay flex items-center justify-center text-ivory-light text-sm font-extrabold">LP</div>
+          <span className="text-[17px] font-bold tracking-tight text-slate-dark">LoanPilot</span>
+          <span className="text-[11px] px-2 py-0.5 bg-slate-faded rounded-full font-medium ml-1 text-slate-light">Pipeline Tracker</span>
         </div>
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 bg-white/[.08] px-3.5 py-1.5 rounded-lg">
-            <Avatar name={profile.full_name} color={profile.color || "#2563eb"} size={26} />
+          <div className="flex items-center gap-2 bg-slate-faded px-3.5 py-1.5 rounded-lg">
+            <Avatar name={profile.full_name} color={profile.color || "#d97757"} size={26} />
             <div>
-              <div className="text-sm font-semibold leading-tight">{profile.full_name}</div>
-              <div className="text-[10px] text-slate-400">{profile.role}</div>
+              <div className="text-sm font-semibold leading-tight text-slate-dark">{profile.full_name}</div>
+              <div className="text-[10px] text-slate-light">{profile.role}</div>
             </div>
           </div>
-          <button onClick={handleSignOut} className="text-xs text-slate-400 hover:text-white transition-colors">Sign Out</button>
+          <button onClick={handleSignOut} className="text-xs text-slate-light hover:text-slate-dark transition-colors">Sign Out</button>
         </div>
       </header>
 
-      <div className="max-w-[1320px] mx-auto px-7 py-6 pb-16">
+      <div className="max-w-[1320px] mx-auto px-7 py-6 pb-16 pt-[84px]">
         {/* Role notice */}
         {profile.role === "Processor" && (
-          <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-2.5 mb-5 flex items-center gap-2.5 text-sm text-blue-800">
+          <div className="bg-cloud border border-subtle rounded-xl px-4 py-2.5 mb-5 flex items-center gap-2.5 text-sm text-slate-dark">
             🔒 You're viewing only loans assigned to you.
           </div>
         )}
         {profile.role === "Assistant" && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-2.5 mb-5 flex items-center gap-2.5 text-sm text-amber-800">
+          <div className="bg-cloud border border-subtle rounded-xl px-4 py-2.5 mb-5 flex items-center gap-2.5 text-sm text-slate-medium">
             👁️ Read-only view. You can see all loans but cannot edit.
           </div>
         )}
@@ -225,10 +225,10 @@ export default function Dashboard() {
             { label: "Funded / Paid", value: stats.funded },
             { label: "Team Members", value: profiles.length, sub: `${processors.length} processors` },
           ].map((k, i) => (
-            <div key={i} className="px-5 py-4 bg-white rounded-xl border border-slate-200 min-w-[140px]">
-              <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">{k.label}</div>
-              <div className="text-2xl font-extrabold text-slate-900 tracking-tight">{k.value}</div>
-              {k.sub && <div className="text-xs text-slate-400 mt-0.5">{k.sub}</div>}
+            <div key={i} className="px-5 py-4 bg-ivory-medium rounded-xl border border-subtle min-w-[140px] card-hover">
+              <div className="text-detail text-slate-light mb-1">{k.label}</div>
+              <div className="text-2xl font-extrabold text-slate-dark tracking-tight">{k.value}</div>
+              {k.sub && <div className="text-xs text-slate-light mt-0.5">{k.sub}</div>}
             </div>
           ))}
         </div>
@@ -236,37 +236,37 @@ export default function Dashboard() {
         {/* Toolbar */}
         <div className="flex gap-2.5 mb-4 flex-wrap items-center">
           <div className="flex-1 min-w-[200px] relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[15px]">⌕</span>
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-light text-[15px]">⌕</span>
             <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search borrower, type, notes..."
-              className="w-full pl-9 pr-3 py-2 rounded-lg border border-slate-200 text-sm outline-none focus:border-blue-400" />
+              className="w-full pl-9 pr-3 py-2 rounded-lg border border-subtle text-sm outline-none focus:border-clay bg-ivory-light" />
           </div>
-          <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} className="px-3 py-2 rounded-lg border border-slate-200 text-sm outline-none bg-white min-w-[140px]">
+          <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} className="px-3 py-2 rounded-lg border border-subtle text-sm outline-none bg-ivory-medium min-w-[140px]">
             <option value="All">All Statuses</option>
             {STATUS_OPTIONS.map(s => <option key={s}>{s}</option>)}
           </select>
           {isLender && (
-            <select value={filterProcessor} onChange={e => setFilterProcessor(e.target.value)} className="px-3 py-2 rounded-lg border border-slate-200 text-sm outline-none bg-white min-w-[140px]">
+            <select value={filterProcessor} onChange={e => setFilterProcessor(e.target.value)} className="px-3 py-2 rounded-lg border border-subtle text-sm outline-none bg-ivory-medium min-w-[140px]">
               <option value="All">All Processors</option>
               {processors.map(p => <option key={p.id} value={p.id}>{p.full_name}</option>)}
             </select>
           )}
-          <label className="flex items-center gap-1.5 text-sm text-slate-500 cursor-pointer whitespace-nowrap">
-            <input type="checkbox" checked={showClosed} onChange={e => setShowClosed(e.target.checked)} className="accent-blue-600" />
+          <label className="flex items-center gap-1.5 text-sm text-slate-medium cursor-pointer whitespace-nowrap">
+            <input type="checkbox" checked={showClosed} onChange={e => setShowClosed(e.target.checked)} className="accent-clay" />
             Show closed
           </label>
           {isLender && (
-            <button onClick={() => setShowAdd(true)} className="px-5 py-2 rounded-lg bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800 flex items-center gap-1.5 whitespace-nowrap">
+            <button onClick={() => setShowAdd(true)} className="px-5 py-2.5 rounded-full bg-slate-dark text-ivory-light text-sm font-semibold hover:bg-slate-medium transition-colors flex items-center gap-1.5 whitespace-nowrap">
               <span className="text-base leading-none">+</span> Add Loan
             </button>
           )}
         </div>
 
         {/* Table */}
-        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <div className="bg-ivory-medium rounded-xl border border-subtle overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="bg-slate-50">
+                <tr className="bg-cloud">
                   {[
                     { key: "borrower", label: "Borrower" },
                     { key: "amount", label: "Amount" },
@@ -279,7 +279,7 @@ export default function Dashboard() {
                     { key: null, label: "" },
                   ].map((col, i) => (
                     <th key={i} onClick={() => col.key && handleSort(col.key)}
-                      className="px-3.5 py-3 text-left text-[11px] font-semibold text-slate-400 uppercase tracking-wider border-b border-slate-200 whitespace-nowrap select-none"
+                      className="px-3.5 py-3 text-left text-detail text-slate-light border-b border-subtle whitespace-nowrap select-none"
                       style={{ cursor: col.key ? "pointer" : "default" }}>
                       {col.label}
                       {col.key && sortCol === col.key && <span className="text-[10px]"> {sortDir === "asc" ? "↑" : "↓"}</span>}
@@ -290,7 +290,7 @@ export default function Dashboard() {
               </thead>
               <tbody>
                 {visibleLoans.length === 0 && (
-                  <tr><td colSpan={9} className="py-10 text-center text-slate-400">No loans match your filters.</td></tr>
+                  <tr><td colSpan={9} className="py-10 text-center text-slate-light">No loans match your filters.</td></tr>
                 )}
                 {visibleLoans.map(loan => {
                   const proc = getProfile(loan.processor_id);
@@ -298,29 +298,29 @@ export default function Dashboard() {
                   const isExpired = loan.lock_exp && new Date(loan.lock_exp) < new Date();
                   return (
                     <tr key={loan.id} onClick={() => setSelectedLoan(loan)}
-                      className="border-b border-slate-100 hover:bg-slate-50 cursor-pointer transition-colors">
+                      className="border-b border-subtle hover:bg-cloud cursor-pointer transition-colors">
                       <td className="px-3.5 py-3 font-semibold">
                         <div>{loan.borrower}</div>
-                        <div className="text-[11px] text-slate-400 font-normal">{loan.id.slice(0, 8)}</div>
+                        <div className="text-[11px] text-slate-light font-normal">{loan.id.slice(0, 8)}</div>
                       </td>
                       <td className="px-3.5 py-3 tabular-nums font-medium">{fmtCurrency(loan.amount)}</td>
                       <td className="px-3.5 py-3">
-                        <span className={`px-2 py-0.5 rounded text-xs font-semibold ${loan.purpose === "Purchase" ? "bg-blue-50 text-blue-600" : "bg-purple-50 text-purple-600"}`}>
+                        <span className={`px-2 py-0.5 rounded text-xs font-semibold ${loan.purpose === "Purchase" ? "bg-cloud text-clay" : "bg-ivory-dark text-slate-medium"}`}>
                           {loan.purpose}
                         </span>
                       </td>
-                      <td className="px-3.5 py-3 text-slate-500">{loan.loan_type}</td>
+                      <td className="px-3.5 py-3 text-slate-medium">{loan.loan_type}</td>
                       <td className="px-3.5 py-3">
                         {loan.locked ? (
                           <div>
-                            <span className="text-green-600 font-semibold text-xs">🔒 Yes</span>
+                            <span className="text-clay font-semibold text-xs">🔒 Yes</span>
                             {loan.lock_exp && (
-                              <div className={`text-[11px] ${isExpired ? "text-red-600 font-semibold" : isExpiringSoon ? "text-amber-600 font-semibold" : "text-slate-400"}`}>
+                              <div className={`text-[11px] ${isExpired ? "text-red-600 font-semibold" : isExpiringSoon ? "text-amber-600 font-semibold" : "text-slate-light"}`}>
                                 {isExpired ? "EXPIRED " : ""}{fmtDate(loan.lock_exp)}
                               </div>
                             )}
                           </div>
-                        ) : <span className="text-slate-400 text-xs">—</span>}
+                        ) : <span className="text-slate-light text-xs">—</span>}
                       </td>
                       <td className="px-3.5 py-3">
                         {proc ? (
@@ -328,14 +328,14 @@ export default function Dashboard() {
                             <Avatar name={proc.full_name} color={proc.color || "#7c3aed"} size={24} />
                             <span className="text-xs font-medium">{proc.full_name}</span>
                           </div>
-                        ) : <span className="text-slate-400 text-xs">Unassigned</span>}
+                        ) : <span className="text-slate-light text-xs">Unassigned</span>}
                       </td>
                       <td className="px-3.5 py-3"><StatusBadge status={loan.status} /></td>
-                      <td className="px-3.5 py-3 text-slate-500 text-xs">{fmtDate(loan.coe_date)}</td>
+                      <td className="px-3.5 py-3 text-slate-medium text-xs">{fmtDate(loan.coe_date)}</td>
                       <td className="px-3.5 py-3">
                         {canEdit && (
                           <button onClick={e => { e.stopPropagation(); setEditLoan(loan); }}
-                            className="border border-slate-200 rounded px-2.5 py-1 text-[11px] text-slate-500 hover:bg-slate-50 font-medium">
+                            className="border border-subtle rounded-full px-2.5 py-1 text-[11px] text-slate-medium hover:bg-cloud font-medium">
                             Edit
                           </button>
                         )}
@@ -346,10 +346,10 @@ export default function Dashboard() {
               </tbody>
             </table>
           </div>
-          <div className="px-4 py-3 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400">
+          <div className="px-4 py-3 border-t border-subtle flex justify-between items-center text-xs text-slate-light">
             <span>Showing {visibleLoans.length} of {loans.length} loans</span>
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-clay animate-pulse" />
               Realtime sync active
             </span>
           </div>
@@ -362,17 +362,17 @@ export default function Dashboard() {
 
       {/* Detail drawer */}
       {selectedLoan && !editLoan && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm" onClick={() => setSelectedLoan(null)}>
-          <div className="bg-white rounded-2xl w-full max-w-md mx-4 max-h-[88vh] overflow-auto shadow-2xl" onClick={e => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-dark/40 backdrop-blur-sm" onClick={() => setSelectedLoan(null)}>
+          <div className="bg-ivory-medium rounded-2xl w-full max-w-md mx-4 max-h-[88vh] overflow-auto shadow-2xl" onClick={e => e.stopPropagation()}>
             <div className="flex justify-between items-center px-6 pt-5">
-              <h2 className="text-lg font-bold text-slate-900">Loan Detail</h2>
-              <button onClick={() => setSelectedLoan(null)} className="text-slate-400 text-xl hover:text-slate-600">&times;</button>
+              <h2 className="text-lg font-bold text-slate-dark">Loan Detail</h2>
+              <button onClick={() => setSelectedLoan(null)} className="text-slate-light text-xl hover:text-slate-dark">&times;</button>
             </div>
             <div className="px-6 pb-6 pt-4">
               <div className="flex justify-between items-start mb-5">
                 <div>
-                  <div className="text-xl font-extrabold tracking-tight">{selectedLoan.borrower}</div>
-                  <div className="text-xs text-slate-400 mt-0.5">{selectedLoan.id.slice(0, 8)} · {selectedLoan.purpose} · {selectedLoan.loan_type}</div>
+                  <div className="text-xl font-extrabold tracking-tight text-slate-dark">{selectedLoan.borrower}</div>
+                  <div className="text-xs text-slate-light mt-0.5">{selectedLoan.id.slice(0, 8)} · {selectedLoan.purpose} · {selectedLoan.loan_type}</div>
                 </div>
                 <StatusBadge status={selectedLoan.status} />
               </div>
@@ -386,20 +386,20 @@ export default function Dashboard() {
                   ["Cond. Approval", fmtDate(selectedLoan.cr_date) || "—"],
                 ].map(([label, val], i) => (
                   <div key={i}>
-                    <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">{label}</div>
+                    <div className="text-detail text-slate-light">{label}</div>
                     <div className="text-sm font-medium mt-0.5">{val}</div>
                   </div>
                 ))}
               </div>
               {selectedLoan.notes && (
-                <div className="px-4 py-3 bg-slate-50 rounded-xl text-sm text-slate-600 leading-relaxed">
-                  <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Notes</div>
+                <div className="px-4 py-3 bg-cloud rounded-xl text-sm text-slate-medium leading-relaxed">
+                  <div className="text-detail text-slate-light mb-1">Notes</div>
                   {selectedLoan.notes}
                 </div>
               )}
               {canEdit && (
                 <button onClick={() => { setEditLoan(selectedLoan); setSelectedLoan(null); }}
-                  className="w-full mt-4 py-2.5 rounded-lg bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800">
+                  className="w-full mt-4 py-2.5 rounded-full bg-slate-dark text-ivory-light text-sm font-semibold hover:bg-slate-medium transition-colors">
                   Edit Loan
                 </button>
               )}

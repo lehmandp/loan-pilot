@@ -1,0 +1,19 @@
+/* ========================================
+   Base Styles
+   Applied to html/body, resets, defaults
+   ======================================== */
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-ivory-light);
+  color: var(--color-slate-dark);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: rgba(217, 119, 87, 0.35);
+}

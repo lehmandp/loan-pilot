@@ -1,0 +1,18 @@
+/*
+ * Lender UI Design System
+ *
+ * Import this file in your app's globals.css BEFORE @import "tailwindcss":
+ *
+ *   @import "lender-ui-design-system";
+ *   @import "tailwindcss";
+ *
+ * Or import individual layers:
+ *
+ *   @import "lender-ui-design-system/src/tokens.css";
+ *   @import "lender-ui-design-system/src/base.css";
+ *   @import "lender-ui-design-system/src/utilities.css";
+ */
+
+@import "./tokens.css";
+@import "./base.css";
+@import "./utilities.css";

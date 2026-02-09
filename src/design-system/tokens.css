@@ -1,0 +1,31 @@
+/* ========================================
+   Design Tokens
+   Colors, typography, spacing, radii
+   ======================================== */
+
+@theme {
+  /* Color palette — warm ivory/cream tones */
+  --color-ivory-light: #f5f0e8;
+  --color-ivory-medium: #ede6d6;
+  --color-ivory-dark: #ddd5c4;
+  --color-slate-dark: #191918;
+  --color-slate-medium: #3d3929;
+  --color-slate-light: #6b6456;
+  --color-slate-faded: rgba(25, 25, 24, 0.1);
+  --color-clay: #d97757;
+  --color-clay-light: #e8a08a;
+  --color-cloud: #f8f4ec;
+
+  /* Typography */
+  --font-sans: "Anthropic Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+
+  /* Spacing */
+  --spacing-site-margin: clamp(2rem, 1.08rem + 3.92vw, 5rem);
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 100vw;
+}

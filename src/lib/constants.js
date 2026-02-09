@@ -8,16 +8,16 @@ export const STATUS_OPTIONS = [
 export const CLOSED_STATUSES = ["Paid", "Funded", "Denied", "Withdrawn"];
 
 export const STATUS_COLORS = {
-  Active:                  { bg: "#dbeafe", text: "#1e40af", dot: "#3b82f6" },
+  Active:                  { bg: "#f5f0e8", text: "#3d3929", dot: "#d97757" },
   CTC:                     { bg: "#fef3c7", text: "#92400e", dot: "#f59e0b" },
-  Submitted:               { bg: "#e0e7ff", text: "#3730a3", dot: "#6366f1" },
+  Submitted:               { bg: "#ede6d6", text: "#3d3929", dot: "#6b6456" },
   "Approved w/ Conditions":{ bg: "#fce7f3", text: "#9d174d", dot: "#ec4899" },
-  Suspended:               { bg: "#f3f4f6", text: "#374151", dot: "#9ca3af" },
+  Suspended:               { bg: "#ddd5c4", text: "#3d3929", dot: "#6b6456" },
   "Pending Sale":          { bg: "#fff7ed", text: "#9a3412", dot: "#f97316" },
   Funded:                  { bg: "#d1fae5", text: "#065f46", dot: "#10b981" },
   Paid:                    { bg: "#dcfce7", text: "#166534", dot: "#22c55e" },
   Denied:                  { bg: "#fee2e2", text: "#991b1b", dot: "#ef4444" },
-  Withdrawn:               { bg: "#f1f5f9", text: "#475569", dot: "#94a3b8" },
+  Withdrawn:               { bg: "#ddd5c4", text: "#6b6456", dot: "#6b6456" },
 };
 
 export const LOAN_TYPES = ["Conventional", "VA", "FHA", "USDA", "Jumbo"];
